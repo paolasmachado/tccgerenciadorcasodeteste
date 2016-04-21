@@ -37,7 +37,8 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
+    <link rel="icon" href="./Imagens/bug-16.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="./Imagens/bug-16.png" type="image/x-icon" />
 </head>
 <body>
     <div id="wrapper">
@@ -51,7 +52,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.aspx">Testágil</a>
+                <a class="navbar-brand" href="Index.aspx">Testágil</a>
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
@@ -136,10 +137,17 @@
                         <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i>Perfil do usuário</a>
+                        <li>
+                            <a href="#"><i class="fa fa-user fa-fw"></i>
+                                <asp:Label runat="server" ID="LabelBoasVindas"></asp:Label></a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i>Logout</a>
+                        <li>
+                            <a href="UsuarioDoSistema.aspx"><i class="fa fa-users fa-fw"></i>Usuários</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="Login.aspx"><i class="fa fa-sign-out fa-fw"></i>Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -171,28 +179,13 @@
                             <a href="#"><i class="fa fa-edit fa-fw"></i>Forms</a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="Backlog.aspx">Backlog</a>
+                                    <a href="Projeto.aspx">Projeto</a>
                                 </li>
                                 <li>
-                                    <a href="ListagemHistoriaDeUsuario.aspx">Estória de Usuário</a>
+                                    <a href="Personagem.aspx">Estória de Usuário</a>
                                 </li>
                                 <li>
-                                    <a href="Persona.aspx">Persona</a>
-                                </li>
-                                <li>
-                                    <a href="Atividades.aspx">Atividades</a>
-                                </li>
-                                <li>
-                                    <a href="Testes.aspx">Plano de Testes</a>
-                                </li>
-                                <li>
-                                    <a href="Testes.aspx">Testes</a>
-                                </li>
-                                <li>
-                                    <a href="Melhoria.aspx">Melhoria</a>
-                                </li>
-                                <li>
-                                    <a href="Defeito.aspx">Bugs</a>
+                                    <a href="EstoriaDeUsuario.aspx">Personagem</a>
                                 </li>
                             </ul>
                         </li>
@@ -215,7 +208,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Editar projeto
+                            <asp:Label ID="LabelTipo" runat="server" Text=""></asp:Label>projeto
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -241,11 +234,10 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Descrição</label>
-                                            <asp:TextBox ID="CampoDescricao" runat="server" class="form-control" rows="3"></asp:TextBox>
+                                            <asp:TextBox ID="CampoDescricao" runat="server" class="form-control" Columns="50" Rows="5"></asp:TextBox>
                                         </div>
-
-                                        <asp:Button ID="ButtonEnviar" runat="server" Text="Enviar" type="submit" class="btn btn-default" OnClick="ButtonEnviar_Click" />
-                                        <asp:Button ID="ButtonLimpar" runat="server" Text="Limpar" type="reset" class="btn btn-default" />
+                                        <asp:Button ID="ButtonEnviar" runat="server" Text="Enviar" type="submit" class="btn btn-success" OnClick="ButtonEnviar_Click" />
+                                        <asp:Button ID="ButtonCriarPersonagem" runat="server" Text="Criar Personagem" class="btn btn-success" OnClick="ButtonCriarPersonagem_Click"/>
 
                                     </form>
                                 </div>
@@ -266,15 +258,16 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/jquery/dist/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="./startbootstrap-sb-admin-2-1.0.8/dist/js/sb-admin-2.js"></script>
+
 </body>
 </html>

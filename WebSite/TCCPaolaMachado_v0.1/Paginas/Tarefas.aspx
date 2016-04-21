@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Index.aspx.cs" Inherits="Index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Tarefas.aspx.cs" Inherits="Classes_Tarefas" %>
 
 <!DOCTYPE html>
 
@@ -14,6 +14,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="./startbootstrap-sb-admin-2-1.0.8/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
     <!-- MetisMenu CSS -->
     <link href="./startbootstrap-sb-admin-2-1.0.8/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet" />
 
@@ -35,6 +36,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
     <link rel="icon" href="./Imagens/bug-16.png" type="image/x-icon" />
     <link rel="shortcut icon" href="./Imagens/bug-16.png" type="image/x-icon" />
 </head>
@@ -50,11 +52,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.aspx">
-                    <i class="fa fa-bug fa-1x"></i>
-                    Testágil
-                    
-                </a>
+                <a class="navbar-brand" href="index.aspx">Testágil</a>
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
@@ -68,14 +66,14 @@
                             <a href="#">
                                 <div>
                                     <strong>
-                                        <asp:Label ID="Label4" runat="server" Text="Sprint xxx"></asp:Label>
+                                        <asp:Label ID="LabelSprints" runat="server" Text="Sprint xxx"></asp:Label>
                                     </strong>
                                 </div>
                                 <div>
-                                    Data início:<asp:Label ID="Label5" runat="server" Text="10/02/2016"></asp:Label>
+                                    Data início:<asp:Label ID="LabelDataInicioSprint" runat="server" Text="10/02/2016"></asp:Label>
                                 </div>
                                 <div>
-                                    Data final:<asp:Label ID="Label6" runat="server" Text="10/02/2016"></asp:Label>
+                                    Data final:<asp:Label ID="LabelDataFinalSprint" runat="server" Text="10/02/2016"></asp:Label>
                                 </div>
                             </a>
                         </li>
@@ -83,6 +81,7 @@
                     <!-- /.dropdown-messages -->
                 </li>
                 <!-- /.dropdown -->
+
                 <!-- TROCAR SPRINT -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="true">
@@ -93,7 +92,7 @@
                             <a href="#">
                                 <div>
                                     <strong>
-                                        <asp:Label ID="Label7" runat="server" Text="Sprint xxx"></asp:Label>
+                                        <asp:Label ID="Label1" runat="server" Text="Sprint xxx"></asp:Label>
                                     </strong>
                                 </div>
                             </a>
@@ -103,7 +102,7 @@
                             <a href="#">
                                 <div>
                                     <strong>
-                                        <asp:Label ID="Label8" runat="server" Text="Sprint xxx"></asp:Label>
+                                        <asp:Label ID="Label2" runat="server" Text="Sprint xxx"></asp:Label>
                                     </strong>
                                 </div>
                             </a>
@@ -113,7 +112,7 @@
                             <a href="#">
                                 <div>
                                     <strong>
-                                        <asp:Label ID="Label9" runat="server" Text="Sprint xxx"></asp:Label>
+                                        <asp:Label ID="Label3" runat="server" Text="Sprint xxx"></asp:Label>
                                     </strong>
                                 </div>
                             </a>
@@ -122,12 +121,14 @@
                     <!-- /.dropdown-messages -->
                 </li>
                 <!-- /.dropdown -->
+
                 <!-- CONFIGURAÇÕES -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
                         <i class="fa fa-gears fa-fw"></i><i class="fa fa-caret-down"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-alerts"></ul>
+                    <ul class="dropdown-menu dropdown-alerts">
+                    </ul>
                 </li>
                 <!-- /.dropdown -->
                 <!-- USUÁRIOS -->
@@ -174,20 +175,20 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="">
+                        <li>
                             <a href="#"><i class="fa fa-edit fa-fw"></i>Forms</a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="Backlog.aspx">Backlog</a>
                                 </li>
                                 <li>
-                                    <a href="ListagemEstoriaDeUsuario.aspx">Estória de Usuário</a>
+                                    <a href="ListagemHistoriaDeUsuario.aspx">Estória de Usuário</a>
                                 </li>
                                 <li>
                                     <a href="Persona.aspx">Persona</a>
                                 </li>
                                 <li>
-                                    <a href="Atividades.aspx">Atividades</a>
+                                    <a href="Tarefas.aspx">Tarefas</a>
                                 </li>
                                 <li>
                                     <a href="Testes.aspx">Plano de Testes</a>
@@ -210,118 +211,62 @@
             <!-- /.navbar-static-side -->
         </nav>
 
-        <!-- /.navbar-static-side -->
-
-
-        <div id="page-wrapper">
+        <div id="page-wrapper" style="min-height: 143px;">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Dashboard</h1>
+                    <h1 class="page-header">Tarefas </h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
             <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-primary">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-book fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <asp:Label ID="QuantidadeEstoriaDeUsuario" runat="server" Text=""></asp:Label>
-                                    </div>
-                                    <div>Estória de Usuário</div>
-                                </div>
-                            </div>
+                            Criar tarefas
                         </div>
-                        <a href="ListagemEstoriaDeUsuario.aspx">
-                            <div class="panel-footer">
-                                <span class="pull-left">Ver detalhes</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
+                        <div class="panel-body">
                             <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-tasks fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <asp:Label ID="QuantidadeTarefas" runat="server" Text=""></asp:Label>
-                                    </div>
-                                    <div>Tarefas</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">Ver detalhes</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-yellow">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-exclamation-circle fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <asp:Label ID="QuantidadeTestes" runat="server" Text=""></asp:Label>
-                                    </div>
-                                    <div>Testes</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">Ver detalhes</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-red">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-bug fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">
-                                        <asp:Label ID="QuantidadeBugs" runat="server" Text=""></asp:Label>
-                                    </div>
-                                    <div>Bugs</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">Ver detalhes</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                                <div class="col-lg-6">
+                                    <form id="form1" runat="server" role="form">
 
+                                        <div class="form-group">
+                                            <label>Título</label>
+                                            <asp:TextBox ID="CampoTitulo" runat="server" class="form-control"></asp:TextBox>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Descrição</label>
+                                            <asp:TextBox ID="CampoDescricao" runat="server" class="form-control"></asp:TextBox>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Pontos</label>
+                                            <asp:TextBox ID="CampoTotalPontos" runat="server" class="form-control"></asp:TextBox>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Critério de aceitação (ID)</label>
+                                            <asp:TextBox ID="CampoCriterio" runat="server" class="form-control"></asp:TextBox>
+                                        </div>
+
+                                        <asp:Button ID="ButtonEnviar" runat="server" Text="Enviar" type="submit" class="btn btn-success" OnClick="ButtonEnviar_Click" />
+                                    </form>
+                                </div>
+                                <!-- /.col-lg-6 (nested) -->
+                            </div>
+                            <!-- /.col-lg-6 (nested) -->
+                        </div>
+                        <!-- /.row (nested) -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
     <!-- /#wrapper -->
 
     <!-- jQuery -->
@@ -333,14 +278,9 @@
     <!-- Metis Menu Plugin JavaScript -->
     <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
-    <!-- Morris Charts JavaScript -->
-    <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/raphael/raphael-min.js"></script>
-    <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/morrisjs/morris.min.js"></script>
-    <!--<script src="./startbootstrap-sb-admin-2-1.0.8/js/morris-data.js"></script>-->
-
     <!-- Custom Theme JavaScript -->
     <script src="./startbootstrap-sb-admin-2-1.0.8/dist/js/sb-admin-2.js"></script>
 
-    <!-- <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/bootstrap/js/dropdown.js"></script>-->
 </body>
 </html>
+

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="HistoriaDeUsuario.aspx.cs" Inherits="Paginas_CadastroHistoriaDeUsuario" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="EstoriaDeUsuario.aspx.cs" Inherits="Paginas_EstoriaDeUsuario" %>
 
 <!DOCTYPE html>
 
@@ -36,7 +36,8 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <link rel="icon" href="./Imagens/bug-16.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="./Imagens/bug-16.png" type="image/x-icon" />
 
 </head>
 <body>
@@ -136,10 +137,17 @@
                         <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i>Perfil do usuário</a>
+                        <li>
+                            <a href="#"><i class="fa fa-user fa-fw"></i>
+                                <asp:Label runat="server" ID="LabelBoasVindas"></asp:Label></a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i>Logout</a>
+                        <li>
+                            <a href="UsuarioDoSistema.aspx"><i class="fa fa-users fa-fw"></i>Usuários</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="Login.aspx"><i class="fa fa-sign-out fa-fw"></i>Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -215,7 +223,8 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Editar estória de usuário
+                            <asp:Label ID="LabelTipo" runat="server" Text=""></asp:Label>
+                            estória de usuário
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -256,41 +265,39 @@
                                             <asp:TextBox ID="CampoAssim" runat="server" class="form-control"></asp:TextBox>
                                         </div>
 
-                                        <asp:Button ID="ButtonEnviar" runat="server" Text="Enviar" type="submit" class="btn btn-default" OnClick="ButtonEnviar_Click" />
-                                        <asp:Button ID="ButtonLimpar" runat="server" Text="Limpar" type="reset" class="btn btn-default" />
+                                        <asp:Button ID="ButtonEnviar" runat="server" Text="Enviar" type="submit" class="btn btn-success" OnClick="ButtonEnviar_Click" />
 
-                                        <div class="alert alert-success">
-                                            <asp:Label ID="LabelSucesso" runat="server" Text=""></asp:Label>
-                                        </div>
+                                        <asp:Button ID="ButtonCriterio" runat="server" Text="Adicionar Critério de aceitação" class="btn btn-success"/>
 
                                     </form>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
                             </div>
-                        <!-- /.col-lg-6 (nested) -->
+                            <!-- /.col-lg-6 (nested) -->
+                        </div>
+                        <!-- /.row (nested) -->
                     </div>
-                    <!-- /.row (nested) -->
+                    <!-- /.panel-body -->
                 </div>
-                <!-- /.panel-body -->
+                <!-- /.panel -->
             </div>
-            <!-- /.panel -->
+            <!-- /.col-lg-12 -->
         </div>
-        <!-- /.col-lg-12 -->
-    </div>
-    <!-- /.row -->
+        <!-- /.row -->
     </div>
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/jquery/dist/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="./startbootstrap-sb-admin-2-1.0.8/dist/js/sb-admin-2.js"></script>
+
 </body>
 </html>

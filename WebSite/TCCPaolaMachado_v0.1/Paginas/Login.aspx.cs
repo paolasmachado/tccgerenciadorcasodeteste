@@ -8,8 +8,8 @@ using MySql.Data.MySqlClient;
 
 public partial class Login : System.Web.UI.Page
 {
-    string StringConexao = "server=127.0.0.1; User Id=root; password=admin; database=bancotcc;";
-
+    string StringConexao = "server=127.0.0.1; User Id=root; password=1234; database=bancotcc;";
+    string Nome;
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -17,26 +17,25 @@ public partial class Login : System.Web.UI.Page
 
     protected void BotaoEnviar_Click(object sender, EventArgs e)
     {
-       // bool ResultadoLogin = ConsultarUsuario();
-        //if (ResultadoLogin)
-        //{
-            Session["nome"] = CampoUsuario.Text;
+        string ResultadoLogin = ConsultarUsuario();
+        if (!ResultadoLogin.Equals("Não encontrado"))
+        {
+            Session["nome"] = Nome;
 
             Response.Redirect("Index.aspx");
-       // }
-       // else {
-           // LabelResultado.Text = "Usuário e senha incorretos";
-       // }
+        }
+        else
+        {
+            LabelMensagem.Text = "Usuário e senha incorretos";
+        }
     }
 
-    protected bool ConsultarUsuario()
+    protected string ConsultarUsuario()
     {
-
-        bool ResultadoUsuario = false;
 
         MySqlConnection Conexao = new MySqlConnection(StringConexao);
         MySqlCommand Comando = new MySqlCommand("SELECT * FROM usuariodosistema WHERE email = @Email and senha = @Senha;", Conexao);
-        Comando.Parameters.AddWithValue("@Email", CampoUsuario.Text);
+        Comando.Parameters.AddWithValue("@Email", CampoEmail.Text);
         Comando.Parameters.AddWithValue("@Senha", CampoSenha.Text);
         Conexao.Open();
         MySqlDataReader reader = Comando.ExecuteReader();
@@ -44,17 +43,20 @@ public partial class Login : System.Web.UI.Page
         {
             string Email = reader["email"].ToString();
             string Senha = reader["senha"].ToString();
-            if ((CampoUsuario.Text.Equals(Email)) && (CampoSenha.Text.Equals(Senha)))
+            if ((CampoEmail.Text.Equals(Email)) && (CampoSenha.Text.Equals(Senha)))
             {
-                ResultadoUsuario = true;
+                Nome = reader["nome"].ToString();
             }
             else
             {
-                ResultadoUsuario = false;
+                Nome = "Não encontrado";
             }
+        }
+        else {
+            Nome = "Não encontrado";
         }
         Conexao.Close();
 
-        return ResultadoUsuario;
+        return Nome;
     }
 }

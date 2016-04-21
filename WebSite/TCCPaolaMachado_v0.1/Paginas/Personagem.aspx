@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ListagemHistoriaDeUsuario.aspx.cs" Inherits="Paginas_ListagemHistoriaDeUsuario" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Personagem.aspx.cs" Inherits="Paginas_Personagem" %>
 
 <!DOCTYPE html>
 
@@ -37,10 +37,12 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
+    <link rel="icon" href="./Imagens/bug-16.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="./Imagens/bug-16.png" type="image/x-icon" />
 </head>
 <body>
     <div id="wrapper">
+
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -135,10 +137,17 @@
                         <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i>Perfil do usuário</a>
+                        <li>
+                            <a href="#"><i class="fa fa-user fa-fw"></i>
+                                <asp:Label runat="server" ID="LabelBoasVindas"></asp:Label></a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i>Logout</a>
+                        <li>
+                            <a href="UsuarioDoSistema.aspx"><i class="fa fa-users fa-fw"></i>Usuários</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="Login.aspx"><i class="fa fa-sign-out fa-fw"></i>Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -173,25 +182,10 @@
                                     <a href="Backlog.aspx">Backlog</a>
                                 </li>
                                 <li>
-                                    <a href="ListagemHistoriaDeUsuario.aspx">Estória de Usuário</a>
+                                    <a href="EstoriaDeUsuario.aspx">Estória de Usuário</a>
                                 </li>
                                 <li>
-                                    <a href="Persona.aspx">Persona</a>
-                                </li>
-                                <li>
-                                    <a href="Atividades.aspx">Atividades</a>
-                                </li>
-                                <li>
-                                    <a href="Testes.aspx">Plano de Testes</a>
-                                </li>
-                                <li>
-                                    <a href="Testes.aspx">Testes</a>
-                                </li>
-                                <li>
-                                    <a href="Melhoria.aspx">Melhoria</a>
-                                </li>
-                                <li>
-                                    <a href="Defeito.aspx">Bugs</a>
+                                    <a href="Persona.aspx">Personagem</a>
                                 </li>
                             </ul>
                         </li>
@@ -202,13 +196,10 @@
             <!-- /.navbar-static-side -->
         </nav>
 
-
-
-
-        <div id="page-wrapper" style="min-height: 264px;">
+        <div id="page-wrapper" style="min-height: 143px;">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Estória de usuário</h1>
+                    <h1 class="page-header">Personagem</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -217,52 +208,57 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Listagem Estória de usuário
+                            <asp:Label ID="LabelTipo" runat="server" Text=""></asp:Label>personagem
                         </div>
-                        <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div class="dataTable_wrapper">
-                                <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div id="dataTables-example_filter" class="dataTables_filter">
-                                                <form id="form1" runat="server">
-                                                    <label>
-                                                        <asp:TextBox ID="CampoSearch" runat="server" class="form-control input-sm" placeholder="Pesquisar código..." aria-controls="dataTables-example"></asp:TextBox></label>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                        
-                                            <!--          COLOCAR AQUI LISTA                               -->
-                                        </div>
-                                    </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <form id="form1" runat="server" role="form">
 
+                                        <div class="form-group">
+                                            <label>Papel</label>
+                                            <asp:TextBox ID="CampoPapel" runat="server" class="form-control"></asp:TextBox>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Função</label>
+                                            <asp:TextBox ID="CampoFuncao" runat="server" class="form-control"></asp:TextBox>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Descrição</label>
+                                            <asp:TextBox ID="CampoDescricao" runat="server" class="form-control"></asp:TextBox>
+                                        </div>
+                                        <asp:Button ID="ButtonEnviar" runat="server" Text="Enviar" type="submit" class="btn btn-success" OnClick="ButtonEnviar_Click" />
+                                        <asp:Button ID="ButtonEstoriaDeUsuario" runat="server" Text="Adicionar estória de usuário" class="btn btn-success" OnClick="ButtonEstoriaDeUsuario_Click" />
+                                    </form>
                                 </div>
+                                <!-- /.col-lg-6 (nested) -->
                             </div>
+                            <!-- /.col-lg-6 (nested) -->
                         </div>
-                        <!-- /.panel-body -->
+                        <!-- /.row (nested) -->
                     </div>
-                    <!-- /.panel -->
+                    <!-- /.panel-body -->
                 </div>
-                <!-- /.col-lg-12 -->
+                <!-- /.panel -->
             </div>
+            <!-- /.col-lg-12 -->
         </div>
+        <!-- /.row -->
     </div>
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/jquery/dist/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="./startbootstrap-sb-admin-2-1.0.8/dist/js/sb-admin-2.js"></script>
+
 </body>
 </html>

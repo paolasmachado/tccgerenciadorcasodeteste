@@ -7,11 +7,12 @@ using System.Web.UI.WebControls;
 
 public partial class Paginas_Backlog : System.Web.UI.Page
 {
+    string StringConexao = "server=127.0.0.1; User Id=root; password=1234; database=bancotcc;";
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["nome"] != null)
         {
-            LabelBoasVindas.Text = "Bem - Vindo(a)  " + (Session["nome"].ToString());
+            LabelBoasVindas.Text = (Session["nome"].ToString());
         }
         else
         {

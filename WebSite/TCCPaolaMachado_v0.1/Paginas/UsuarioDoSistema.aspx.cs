@@ -8,7 +8,7 @@ using MySql.Data.MySqlClient;
 
 public partial class Paginas_UsuarioDoSistema : System.Web.UI.Page
 {
-    string StringConexao = "server=127.0.0.1; User Id=root; password=admin; database=bancotcc;";
+    string StringConexao = "server=127.0.0.1; User Id=root; password=1234; database=bancotcc;";
     MySqlConnection Conexao;
     MySqlCommand Comando;
 
@@ -17,7 +17,7 @@ public partial class Paginas_UsuarioDoSistema : System.Web.UI.Page
 
         if (Session["nome"] != null)
         {
-            LabelBoasVindas.Text = "Bem - Vindo(a)  " + (Session["nome"].ToString());
+            LabelBoasVindas.Text = (Session["nome"].ToString());
         }
         else
         {
@@ -25,14 +25,8 @@ public partial class Paginas_UsuarioDoSistema : System.Web.UI.Page
         }
     }
 
-    protected void BotaoEnviar_Click(object sender, EventArgs e)
+    protected void CriarUsuarioDoSistema()
     {
-        CriarUsuarioDoSistema();
-   
-
-    }
-
-    protected void CriarUsuarioDoSistema() {
 
         Conexao = new MySqlConnection();
         Comando = new MySqlCommand();
@@ -40,12 +34,11 @@ public partial class Paginas_UsuarioDoSistema : System.Web.UI.Page
         Comando.Connection = Conexao;
         Conexao.Open();
 
-        string SQLComando = "INSERT INTO usuariodosistema (nomeusuario, email, usuario, perfil, senha) VALUES "
-                        + "( @Nome, @Email, @Usuario, @Perfil, @Senha)";
+        string SQLComando = "INSERT INTO usuariodosistema (nome, email, perfil, senha) VALUES "
+                        + "( @Nome, @Email, @Perfil, @Senha)";
         Comando = new MySqlCommand(SQLComando, Conexao);
         Comando.Parameters.AddWithValue("@Nome", CampoNome.Text.ToString());
         Comando.Parameters.AddWithValue("@Email", CampoEmail.Text.ToString());
-        Comando.Parameters.AddWithValue("@Usuario", CampoUsuario.Text);
         Comando.Parameters.AddWithValue("@Perfil", CampoPerfil.SelectedValue.ToString());
         Comando.Parameters.AddWithValue("@Senha", CampoSenha.Text);
         Comando.ExecuteNonQuery();
@@ -53,4 +46,10 @@ public partial class Paginas_UsuarioDoSistema : System.Web.UI.Page
         Conexao.Close();
     }
 
+
+    protected void ButtonEnviar_Click(object sender, EventArgs e)
+    {
+        CriarUsuarioDoSistema();
+
+    }
 }
