@@ -109,6 +109,6 @@ public partial class Paginas_Personagem : System.Web.UI.Page
 
     protected void ButtonEstoriaDeUsuario_Click(object sender, EventArgs e)
     {
-
+        Response.Redirect("EstoriaDeUsuario.aspx");
     }
 }

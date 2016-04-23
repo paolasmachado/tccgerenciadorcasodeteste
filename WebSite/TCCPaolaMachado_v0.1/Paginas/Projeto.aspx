@@ -52,7 +52,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="Index.aspx">Testágil</a>
+                <a class="navbar-brand" href="index.aspx"><i class="fa fa-bug fa-1x"></i>Testágil</a>
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
@@ -128,6 +128,24 @@
                         <i class="fa fa-gears fa-fw"></i><i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-alerts">
+                        <li>
+                            <a href="Projeto.aspx">
+                                <div>
+                                    <strong>
+                                        <label>Configurar projeto</label>
+                                    </strong>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="Sprint.aspx">
+                                <div>
+                                    <strong>
+                                        <label>Configurar sprint</label></strong>
+                                </div>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <!-- /.dropdown -->
@@ -163,31 +181,24 @@
                             <a href="Index.aspx"><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Relatórios<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <!-- ADICIONAR LINK DO RELATÓRIO -->
-                                    <a href="flot.html">Defeitos</a>
-                                </li>
-                                <li>
-                                    <!-- ADICIONAR LINK DO RELATÓRIO -->
-                                    <a href="morris.html">Melhorias</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-edit fa-fw"></i>Forms</a>
+                            <a href="#"><i class="fa fa-edit fa-fw"></i>Criar</a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="Projeto.aspx">Projeto</a>
                                 </li>
                                 <li>
-                                    <a href="Personagem.aspx">Estória de Usuário</a>
+                                    <a href="Personagem.aspx">Personagem</a>
                                 </li>
                                 <li>
-                                    <a href="EstoriaDeUsuario.aspx">Personagem</a>
+                                    <a href="EstoriaDeUsuario.aspx">Estória de Usuário</a>
+                                </li>
+                                <li>
+                                    <a href="CriterioDeAceitacao.aspx">Critério de aceitação</a>
                                 </li>
                             </ul>
+                        </li>
+                        <li>
+                            <a href="ListagemConfigurarProjeto.aspx"><i class="fa fa-wrench fa-fw"></i>Configurar</a>
                         </li>
                     </ul>
                 </div>
@@ -237,7 +248,7 @@
                                             <asp:TextBox ID="CampoDescricao" runat="server" class="form-control" Columns="50" Rows="5"></asp:TextBox>
                                         </div>
                                         <asp:Button ID="ButtonEnviar" runat="server" Text="Enviar" type="submit" class="btn btn-success" OnClick="ButtonEnviar_Click" />
-                                        <asp:Button ID="ButtonCriarPersonagem" runat="server" Text="Criar Personagem" class="btn btn-success" OnClick="ButtonCriarPersonagem_Click"/>
+                                        <asp:Button ID="ButtonCriarPersonagem" runat="server" Text="Criar Personagem" class="btn btn-success" OnClick="ButtonCriarPersonagem_Click" />
 
                                     </form>
                                 </div>

@@ -55,12 +55,13 @@ public partial class Paginas_Projeto : System.Web.UI.Page
         CampoDataFinal.Text = "";
     }
 
-    protected void CriarProjeto() {
+    protected void CriarProjeto()
+    {
         MySqlConnection Conexao = new MySqlConnection();
         MySqlCommand Comando = new MySqlCommand();
         Conexao.ConnectionString = StringConexao;
         Comando.Connection = Conexao;
-        Conexao.Open();     
+        Conexao.Open();
 
         string SQLComando = "INSERT INTO projeto(titulo, datainicio, datafim, descricao, empresa) VALUES "
                         + "(@Titulo, @DataInicio, @DataFim, @Descricao, @Empresa)";

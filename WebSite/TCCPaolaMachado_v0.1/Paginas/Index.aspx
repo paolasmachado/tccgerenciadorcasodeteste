@@ -50,11 +50,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.aspx">
-                    <i class="fa fa-bug fa-1x"></i>
-                    Testágil
-                    
-                </a>
+                <a class="navbar-brand" href="index.aspx"><i class="fa fa-bug fa-1x"></i>Testágil</a>
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
@@ -127,7 +123,26 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
                         <i class="fa fa-gears fa-fw"></i><i class="fa fa-caret-down"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-alerts"></ul>
+                    <ul class="dropdown-menu dropdown-alerts">
+                        <li>
+                            <a href="Projeto.aspx">
+                                <div>
+                                    <strong>
+                                        <label>Configurar projeto</label>
+                                    </strong>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="Sprint.aspx">
+                                <div>
+                                    <strong>
+                                        <label>Configurar sprint</label></strong>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <!-- /.dropdown -->
                 <!-- USUÁRIOS -->
@@ -174,7 +189,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="">
+                        <li>
                             <a href="#"><i class="fa fa-edit fa-fw"></i>Forms</a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -209,10 +224,7 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
-
         <!-- /.navbar-static-side -->
-
-
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
@@ -326,21 +338,15 @@
 
     <!-- jQuery -->
     <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/jquery/dist/jquery.min.js"></script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
     <!-- Metis Menu Plugin JavaScript -->
     <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/metisMenu/dist/metisMenu.min.js"></script>
-
     <!-- Morris Charts JavaScript -->
     <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/raphael/raphael-min.js"></script>
     <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/morrisjs/morris.min.js"></script>
-    <!--<script src="./startbootstrap-sb-admin-2-1.0.8/js/morris-data.js"></script>-->
-
     <!-- Custom Theme JavaScript -->
     <script src="./startbootstrap-sb-admin-2-1.0.8/dist/js/sb-admin-2.js"></script>
 
-    <!-- <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/bootstrap/js/dropdown.js"></script>-->
 </body>
 </html>

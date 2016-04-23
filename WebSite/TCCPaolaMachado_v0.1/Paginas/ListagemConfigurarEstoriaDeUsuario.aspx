@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Personagem.aspx.cs" Inherits="Paginas_Personagem" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ListagemConfigurarEstoriaDeUsuario.aspx.cs" Inherits="Paginas_ListagemEstoriaDeUsuario" %>
 
 <!DOCTYPE html>
 
@@ -42,7 +42,6 @@
 </head>
 <body>
     <div id="wrapper">
-
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -181,6 +180,19 @@
                             <a href="Index.aspx"><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
                         </li>
                         <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Relatórios<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <!-- ADICIONAR LINK DO RELATÓRIO -->
+                                    <a href="flot.html">Defeitos</a>
+                                </li>
+                                <li>
+                                    <!-- ADICIONAR LINK DO RELATÓRIO -->
+                                    <a href="morris.html">Melhorias</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
                             <a href="#"><i class="fa fa-edit fa-fw"></i>Criar</a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -200,17 +212,17 @@
                         <li>
                             <a href="ListagemConfigurarProjeto.aspx"><i class="fa fa-wrench fa-fw"></i>Configurar</a>
                         </li>
+
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
             </div>
             <!-- /.navbar-static-side -->
         </nav>
-
-        <div id="page-wrapper" style="min-height: 143px;">
+        <div id="page-wrapper" style="min-height: 264px;">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Personagem</h1>
+                    <h1 class="page-header">Estória de usuário</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -219,43 +231,54 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <asp:Label ID="LabelTipo" runat="server" Text=""></asp:Label>personagem
+                            Selecione as estórias de usuário
                         </div>
+                        <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <form id="form1" runat="server" role="form">
+                            <div class="dataTable_wrapper">
+                                <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                                    <form id="form1" runat="server">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <asp:TextBox ID="CampoSearch" runat="server" class="form-control input-sm" placeholder="Pesquisar código..."></asp:TextBox>
+                                                <asp:LinkButton ID="ButtonPesquisar" runat="server" class="btn btn-default" OnClick="ButtonPesquisar_Click">
+                                                    <i class="fa fa-search"></i>
+                                                </asp:LinkButton>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <asp:GridView ID="grdDados" Width="100%" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" role="grid" aria-describedby="dataTables-example_info" Style="width: 100%;" runat="server" AutoGenerateColumns="false" OnRowCommand="grdDados_RowCommand">
+                                                    <Columns>
+                                                        <asp:BoundField DataField="Codigo" HeaderText="Código" ControlStyle-BorderWidth="30" />
+                                                        <asp:BoundField DataField="Titulo" HeaderText="Título" />
+                                                        <asp:BoundField DataField="Pontos" HeaderText="Pontos" />
+                                                        <asp:TemplateField>
+                                                            <ItemTemplate>
+                                                                <asp:LinkButton ID="ButtonEditar" class="btn btn-default btn-circle" runat="server" CommandName="Editar" Text="Adicionar"
+                                                                    CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Codigo")%>'>
+                                                                <i class="fa fa-check"></i>                                                                
+                                                                </asp:LinkButton>
 
-                                        <div class="form-group">
-                                            <label>Papel</label>
-                                            <asp:TextBox ID="CampoPapel" runat="server" class="form-control"></asp:TextBox>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+                                                    </Columns>
+                                                </asp:GridView>
+                                            </div>
                                         </div>
-
-                                        <div class="form-group">
-                                            <label>Função</label>
-                                            <asp:TextBox ID="CampoFuncao" runat="server" class="form-control"></asp:TextBox>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Descrição</label>
-                                            <asp:TextBox ID="CampoDescricao" runat="server" class="form-control"></asp:TextBox>
-                                        </div>
-                                        <asp:Button ID="ButtonEnviar" runat="server" Text="Enviar" type="submit" class="btn btn-success" OnClick="ButtonEnviar_Click" />
-                                        <asp:Button ID="ButtonEstoriaDeUsuario" runat="server" Text="Adicionar estória de usuário" class="btn btn-success" OnClick="ButtonEstoriaDeUsuario_Click" />
                                     </form>
                                 </div>
-                                <!-- /.col-lg-6 (nested) -->
                             </div>
-                            <!-- /.col-lg-6 (nested) -->
                         </div>
-                        <!-- /.row (nested) -->
+                        <!-- /.panel-body -->
                     </div>
-                    <!-- /.panel-body -->
+                    <!-- /.panel -->
                 </div>
-                <!-- /.panel -->
+                <!-- /.col-lg-12 -->
             </div>
-            <!-- /.col-lg-12 -->
         </div>
-        <!-- /.row -->
     </div>
     <!-- /#wrapper -->
 

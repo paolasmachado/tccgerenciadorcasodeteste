@@ -123,4 +123,9 @@ public partial class Paginas_EstoriaDeUsuario : System.Web.UI.Page
     }
 
 
+
+    protected void ButtonCriterio_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("CriterioDeAceitacao.aspx");
+    }
 }

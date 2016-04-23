@@ -51,7 +51,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.aspx">Testágil</a>
+               <a class="navbar-brand" href="index.aspx"><i class="fa fa-bug fa-1x"></i>Testágil</a>
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
@@ -127,6 +127,24 @@
                         <i class="fa fa-gears fa-fw"></i><i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-alerts">
+                        <li>
+                            <a href="Projeto.aspx">
+                                <div>
+                                    <strong>
+                                        <label>Configurar projeto</label>
+                                    </strong>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="Sprint.aspx">
+                                <div>
+                                    <strong>
+                                        <label>Configurar sprint</label></strong>
+                                </div>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <!-- /.dropdown -->
@@ -236,8 +254,9 @@
                                             </div>
                                             <div class="col-sm-6">
                                                 <asp:TextBox ID="CampoSearch" runat="server" class="form-control input-sm" placeholder="Pesquisar código..."></asp:TextBox>
-                                                <asp:Button ID="ButtonPesquisar" runat="server" Text="Pesquisar..." class="btn btn-default" OnClick="ButtonPesquisar_Click" />
-
+                                               <asp:LinkButton ID="ButtonPesquisar" runat="server" class="btn btn-default" OnClick="ButtonPesquisar_Click">
+                                                    <i class="fa fa-search"></i>
+                                                </asp:LinkButton>
                                             </div>
                                         </div>
                                         <div class="row">

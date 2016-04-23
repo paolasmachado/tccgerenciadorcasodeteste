@@ -42,7 +42,7 @@ public partial class Paginas_CriterioDeAceitacao : System.Web.UI.Page
     {
         if (editarCriterioDeAceitacao)
         {
-            EditarEstoriaDeUsuario(idCriterioDeAceitacao);
+            EditarCriterioDeAceitacao(idCriterioDeAceitacao);
         }
         else
         {
@@ -60,10 +60,11 @@ public partial class Paginas_CriterioDeAceitacao : System.Web.UI.Page
         Comando.Connection = Conexao;
         Conexao.Open();
 
-        string SQLComando = "INSERT INTO criteriodeaceitacao(titulo, prioridade, pontos, como, desejo, assim) VALUES "
-                        + "(@Titulo, @Prioridade, @Pontos, @Como, @Desejo, @Assim)";
+        string SQLComando = "INSERT INTO criteriodeaceitacao(descricao, idestoriadeusuario) VALUES "
+                        + "(@Descricao, @IDEstoriadeusuario)";
         Comando = new MySqlCommand(SQLComando, Conexao);
-        Comando.Parameters.AddWithValue("@Titulo", CampoDescricao.Text);
+        Comando.Parameters.AddWithValue("@Descricao", CampoDescricao.Text);
+        Comando.Parameters.AddWithValue("@IDEstoriadeusuario", "");
         Comando.ExecuteNonQuery();
         Conexao.Close();
     }

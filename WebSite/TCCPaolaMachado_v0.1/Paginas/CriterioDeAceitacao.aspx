@@ -52,7 +52,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.aspx">Testágil</a>
+                <a class="navbar-brand" href="index.aspx"><i class="fa fa-bug fa-1x"></i>Testágil</a>
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
@@ -128,6 +128,24 @@
                         <i class="fa fa-gears fa-fw"></i><i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-alerts">
+                        <li>
+                            <a href="Projeto.aspx">
+                                <div>
+                                    <strong>
+                                        <label>Configurar projeto</label>
+                                    </strong>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="Sprint.aspx">
+                                <div>
+                                    <strong>
+                                        <label>Configurar sprint</label></strong>
+                                </div>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <!-- /.dropdown -->
@@ -163,46 +181,24 @@
                             <a href="Index.aspx"><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Relatórios<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-edit fa-fw"></i>Criar</a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <!-- ADICIONAR LINK DO RELATÓRIO -->
-                                    <a href="flot.html">Defeitos</a>
+                                    <a href="Projeto.aspx">Projeto</a>
                                 </li>
                                 <li>
-                                    <!-- ADICIONAR LINK DO RELATÓRIO -->
-                                    <a href="morris.html">Melhorias</a>
+                                    <a href="Personagem.aspx">Personagem</a>
+                                </li>
+                                <li>
+                                    <a href="EstoriaDeUsuario.aspx">Estória de Usuário</a>
+                                </li>
+                                <li>
+                                    <a href="CriterioDeAceitacao.aspx">Critério de aceitação</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-edit fa-fw"></i>Forms</a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="Backlog.aspx">Backlog</a>
-                                </li>
-                                <li>
-                                    <a href="ListagemHistoriaDeUsuario.aspx">Estória de Usuário</a>
-                                </li>
-                                <li>
-                                    <a href="Persona.aspx">Persona</a>
-                                </li>
-                                <li>
-                                    <a href="Atividades.aspx">Atividades</a>
-                                </li>
-                                <li>
-                                    <a href="Testes.aspx">Plano de Testes</a>
-                                </li>
-                                <li>
-                                    <a href="Testes.aspx">Testes</a>
-                                </li>
-                                <li>
-                                    <a href="Melhoria.aspx">Melhoria</a>
-                                </li>
-                                <li>
-                                    <a href="Defeito.aspx">Bugs</a>
-                                </li>
-                            </ul>
+                            <a href="ListagemConfigurarProjeto.aspx"><i class="fa fa-wrench fa-fw"></i>Configurar</a>
                         </li>
                     </ul>
                 </div>
@@ -235,7 +231,7 @@
                                             <label>Descrição</label>
                                             <asp:TextBox ID="CampoDescricao" runat="server" class="form-control"></asp:TextBox>
                                         </div>
-                                        
+
                                         <asp:Button ID="ButtonEnviar" runat="server" Text="Enviar" type="submit" class="btn btn-success" OnClick="ButtonEnviar_Click" />
                                     </form>
                                 </div>

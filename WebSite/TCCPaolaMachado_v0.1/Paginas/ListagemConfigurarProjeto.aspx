@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Personagem.aspx.cs" Inherits="Paginas_Personagem" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ListagemConfigurarProjeto.aspx.cs" Inherits="Paginas_ListagemConfigurarProjeto" %>
 
 <!DOCTYPE html>
 
@@ -36,13 +36,30 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
     <link rel="icon" href="./Imagens/bug-16.png" type="image/x-icon" />
     <link rel="shortcut icon" href="./Imagens/bug-16.png" type="image/x-icon" />
 </head>
 <body>
     <div id="wrapper">
-
+        <div class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Importante!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Selecione o projeto que deseja configurar</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -181,6 +198,19 @@
                             <a href="Index.aspx"><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
                         </li>
                         <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Relatórios<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <!-- ADICIONAR LINK DO RELATÓRIO -->
+                                    <a href="flot.html">Defeitos</a>
+                                </li>
+                                <li>
+                                    <!-- ADICIONAR LINK DO RELATÓRIO -->
+                                    <a href="morris.html">Melhorias</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
                             <a href="#"><i class="fa fa-edit fa-fw"></i>Criar</a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -206,11 +236,10 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
-
-        <div id="page-wrapper" style="min-height: 143px;">
+        <div id="page-wrapper" style="min-height: 264px;">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Personagem</h1>
+                    <h1 class="page-header">Projeto</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -219,43 +248,53 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <asp:Label ID="LabelTipo" runat="server" Text=""></asp:Label>personagem
+                            Selecione um projeto
                         </div>
+                        <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <form id="form1" runat="server" role="form">
-
-                                        <div class="form-group">
-                                            <label>Papel</label>
-                                            <asp:TextBox ID="CampoPapel" runat="server" class="form-control"></asp:TextBox>
+                            <div class="dataTable_wrapper">
+                                <div id="dataTables-example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                                    <form id="form1" runat="server">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <asp:TextBox ID="CampoSearch" runat="server" class="form-control input-sm" placeholder="Pesquisar código..."></asp:TextBox>
+                                                <asp:LinkButton ID="ButtonPesquisar" runat="server" class="btn btn-default" OnClick="ButtonPesquisar_Click">
+                                                    <i class="fa fa-search"></i>
+                                                </asp:LinkButton>
+                                            </div>
                                         </div>
-
-                                        <div class="form-group">
-                                            <label>Função</label>
-                                            <asp:TextBox ID="CampoFuncao" runat="server" class="form-control"></asp:TextBox>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <asp:GridView ID="grdDados" Width="100%" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" role="grid" aria-describedby="dataTables-example_info" Style="width: 100%;" runat="server" AutoGenerateColumns="false" OnRowCommand="grdDados_RowCommand">
+                                                    <Columns>
+                                                        <asp:BoundField DataField="Codigo" HeaderText="Código" ControlStyle-BorderWidth="30" />
+                                                        <asp:BoundField DataField="Titulo" HeaderText="Título" />
+                                                        <asp:BoundField DataField="Empresa" HeaderText="Empresa" />
+                                                        <asp:TemplateField>
+                                                            <ItemTemplate>
+                                                                <asp:LinkButton ID="ButtonEditar" class="btn btn-default btn-circle" runat="server" CommandName="Editar" Text="Editar"
+                                                                    CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Codigo")%>'>
+                                                                    <i class="fa fa-link"></i>
+                                                                </asp:LinkButton>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+                                                    </Columns>
+                                                </asp:GridView>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Descrição</label>
-                                            <asp:TextBox ID="CampoDescricao" runat="server" class="form-control"></asp:TextBox>
-                                        </div>
-                                        <asp:Button ID="ButtonEnviar" runat="server" Text="Enviar" type="submit" class="btn btn-success" OnClick="ButtonEnviar_Click" />
-                                        <asp:Button ID="ButtonEstoriaDeUsuario" runat="server" Text="Adicionar estória de usuário" class="btn btn-success" OnClick="ButtonEstoriaDeUsuario_Click" />
                                     </form>
                                 </div>
-                                <!-- /.col-lg-6 (nested) -->
                             </div>
-                            <!-- /.col-lg-6 (nested) -->
                         </div>
-                        <!-- /.row (nested) -->
+                        <!-- /.panel-body -->
                     </div>
-                    <!-- /.panel-body -->
+                    <!-- /.panel -->
                 </div>
-                <!-- /.panel -->
+                <!-- /.col-lg-12 -->
             </div>
-            <!-- /.col-lg-12 -->
         </div>
-        <!-- /.row -->
     </div>
     <!-- /#wrapper -->
 
@@ -264,6 +303,10 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/bootstrap/js/modal.js"></script>
+
+    <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/bootstrap/js/transition.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/metisMenu/dist/metisMenu.min.js"></script>
