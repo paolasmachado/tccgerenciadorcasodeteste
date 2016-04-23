@@ -254,7 +254,7 @@
                                             </div>
                                             <div class="col-sm-6">
                                                 <asp:TextBox ID="CampoSearch" runat="server" class="form-control input-sm" placeholder="Pesquisar código..."></asp:TextBox>
-                                               <asp:LinkButton ID="ButtonPesquisar" runat="server" class="btn btn-default" OnClick="ButtonPesquisar_Click">
+                                                <asp:LinkButton ID="ButtonPesquisar" runat="server" class="btn btn-default" OnClick="ButtonPesquisar_Click">
                                                     <i class="fa fa-search"></i>
                                                 </asp:LinkButton>
                                             </div>
@@ -297,6 +297,7 @@
 
     <!-- jQuery -->
     <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/jquery/dist/jquery.min.js"></script>
+
 
     <!-- Bootstrap Core JavaScript -->
     <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>

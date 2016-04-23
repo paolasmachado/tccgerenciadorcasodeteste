@@ -15,6 +15,8 @@ public partial class Paginas_ListagemEstoriaDeUsuario : System.Web.UI.Page
 
     bool PesquisarEstoriaCodigo = false;
 
+    string CodigoURL;
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -26,6 +28,11 @@ public partial class Paginas_ListagemEstoriaDeUsuario : System.Web.UI.Page
         {
             Response.Redirect("Login.aspx");
         }
+
+        CodigoURL = Request.Url.Query;
+        string[] URL = CodigoURL.Split('=');
+        CodigoURL = URL[1];
+
         if (!Page.IsPostBack)
         {
             PesquisarEstoriasDeUsuario();
@@ -52,37 +59,17 @@ public partial class Paginas_ListagemEstoriaDeUsuario : System.Web.UI.Page
        
     }
 
-
     protected void grdDados_RowCommand(object sender, GridViewCommandEventArgs e)
     {
        
-        if (e.CommandName.Equals("Editar"))
+        if (e.CommandName.Equals("Vincular"))
         {
             string CodigoEstoria = e.CommandArgument.ToString();
-            if (!String.IsNullOrEmpty(CodigoEstoria))
-                this.Response.Redirect("EstoriaDeUsuario.aspx?Codigo=" + CodigoEstoria);
+            if (!String.IsNullOrEmpty(CodigoEstoria)) {
+
+                VincularEstoriaDeUsuario(CodigoURL);
+            }
         }
-    }
-
-    public void ExcluirEstoriaDeUsuario(String Codigo)
-    {
-        MySqlConnection Conexao = new MySqlConnection();
-        MySqlCommand Comando = new MySqlCommand();
-        Conexao.ConnectionString = StringConexao;
-        Comando.Connection = Conexao;
-        Conexao.Open();
-        string SQLComando = "DELETE FROM estoriadeusuario WHERE idestoriadeusuario = @Codigo";
-        Comando = new MySqlCommand(SQLComando, Conexao);
-        Comando.Parameters.AddWithValue("@Codigo", Codigo);
-        Comando.ExecuteNonQuery();
-        Conexao.Close();
-    }
-
-
-
-    protected void BotaoAdicionarHistoriaDeUsuario_Click1(object sender, EventArgs e)
-    {
-        Response.Redirect("EstoriaDeUsuario.aspx");
     }
 
     protected void ButtonPesquisar_Click(object sender, EventArgs e)
@@ -106,5 +93,19 @@ public partial class Paginas_ListagemEstoriaDeUsuario : System.Web.UI.Page
         this.grdDados.DataSource = ListEstoria;
         this.grdDados.DataBind();
 
+    }
+
+    protected void VincularEstoriaDeUsuario(string Codigo)
+    {
+        MySqlConnection Conexao = new MySqlConnection();
+        MySqlCommand Comando = new MySqlCommand();
+        Conexao.ConnectionString = StringConexao;
+        Comando.Connection = Conexao;
+        Conexao.Open();
+        string SQLComando = "UPDATE criteriodeaceitacao SET descricao = @Descricao , idestoriadeusuario = @IDEstoriadeusuario WHERE idEstoriadeusuario = @Codigo";
+        Comando = new MySqlCommand(SQLComando, Conexao);
+        Comando.Parameters.AddWithValue("@Codigo", Codigo);
+        Comando.ExecuteNonQuery();
+        Conexao.Close();
     }
 }

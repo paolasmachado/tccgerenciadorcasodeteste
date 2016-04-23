@@ -39,27 +39,25 @@
     <link rel="icon" href="./Imagens/bug-16.png" type="image/x-icon" />
     <link rel="shortcut icon" href="./Imagens/bug-16.png" type="image/x-icon" />
 </head>
-<body>
-    <div id="wrapper">
-        <div class="modal fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Importante!</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>Selecione o projeto que deseja configurar</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
+<body onload="$('#my-modal').modal('show');">
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Importante!</h4>
                 </div>
-                <!-- /.modal-content -->
+                <div class="modal-body">
+                    Para atribuir as estórias de usuário ao projeto, vamos iniciar selecionando o projeto. 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Ok, entendi!</button>
+                </div>
             </div>
-            <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal -->
+    </div>
+    <div id="wrapper">
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -300,6 +298,12 @@
 
     <!-- jQuery -->
     <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/jquery/dist/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('#myModal').modal('show');
+        });
+</script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>

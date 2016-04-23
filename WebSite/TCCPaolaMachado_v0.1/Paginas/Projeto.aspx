@@ -198,7 +198,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="ListagemConfigurarProjeto.aspx"><i class="fa fa-wrench fa-fw"></i>Configurar</a>
+                            <a href="ListagemConfigurarProjeto.aspx" ><i class="fa fa-wrench fa-fw"></i>Configurar</a>
                         </li>
                     </ul>
                 </div>

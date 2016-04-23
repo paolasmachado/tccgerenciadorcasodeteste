@@ -2713,6 +2713,9 @@ fieldset[disabled] .checkbox label {
   line-height: 1.5;
   border-radius: 3px;
 }
+#CampoSearch {
+  margin-right: 15px;
+}
 select.input-sm {
   height: 30px;
   line-height: 30px;
@@ -5871,7 +5874,7 @@ button.close {
 }
 .modal {
   position: fixed;
-  top: 0;
+  top: 50%;
   right: 0;
   bottom: 0;
   left: 0;
@@ -5974,7 +5977,7 @@ button.close {
 @media (min-width: 768px) {
   .modal-dialog {
     width: 600px;
-    margin: 30px auto;
+    margin: 150px auto;
   }
   .modal-content {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);

@@ -40,7 +40,25 @@
     <link rel="icon" href="./Imagens/bug-16.png" type="image/x-icon" />
     <link rel="shortcut icon" href="./Imagens/bug-16.png" type="image/x-icon" />
 </head>
-<body>
+<body onload="$('#my-modal').modal('show');">
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Importante!</h4>
+                </div>
+                <div class="modal-body">
+                    Agora, clique no botão <button type="button" class="btn btn-default btn-circle" accesskey:"disabled"><i class="fa fa-check"></i>
+                            </button> quando desejar atribuir a estória de usuário ao projeto.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Ok, entendi!</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="wrapper">
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -257,7 +275,7 @@
                                                         <asp:BoundField DataField="Pontos" HeaderText="Pontos" />
                                                         <asp:TemplateField>
                                                             <ItemTemplate>
-                                                                <asp:LinkButton ID="ButtonEditar" class="btn btn-default btn-circle" runat="server" CommandName="Editar" Text="Adicionar"
+                                                                <asp:LinkButton ID="ButtonEditar" class="btn btn-default btn-circle" runat="server" CommandName="Vincular" Text="Adicionar"
                                                                     CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Codigo")%>'>
                                                                 <i class="fa fa-check"></i>                                                                
                                                                 </asp:LinkButton>
@@ -284,6 +302,12 @@
 
     <!-- jQuery -->
     <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/jquery/dist/jquery.min.js"></script>
+
+        <script type="text/javascript">
+        $(window).load(function () {
+            $('#myModal').modal('show');
+        });
+</script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="./startbootstrap-sb-admin-2-1.0.8/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
